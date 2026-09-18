@@ -1,22 +1,29 @@
 import numpy as np
+import config
 
-def per_beat_zscore(segment):
-    """Applies Z-score normalization independently to a 1D signal segment."""
-    mean = np.mean(segment)
-    std = np.std(segment)
-    if std == 0:
-        std = 1e-8
-    return (segment - mean) / std
-
-def normalize_and_concatenate(segments_lead_1, segments_lead_2):
-    """Normalizes each lead independently, then concatenates them."""
-    X_data = []
-    for seg_1, seg_2 in zip(segments_lead_1, segments_lead_2):
-        norm_1 = per_beat_zscore(seg_1)
-        norm_2 = per_beat_zscore(seg_2)
+def per_beat_zscore_normalization(features):
+    """
+    Applies independent Z-score normalization for Lead 1 and Lead 2 segments
+    within each 396-dimensional combined feature vector to eliminate external noise variations.
+    """
+    normalized_features = []
+    half = config.TOTAL_SAMPLES  # 198
+    
+    for feature in features:
+        lead1 = feature[:half].copy()
+        lead2 = feature[half:].copy()
         
-        # Concatenate 198 from lead 1 and 198 from lead 2 to make 396 dimensions
-        combined = np.concatenate((norm_1, norm_2))
-        X_data.append(combined)
+        # Normalize Lead 1 independently
+        m1, s1 = np.mean(lead1), np.std(lead1)
+        if s1 > 0:
+            lead1 = (lead1 - m1) / s1
+            
+        # Normalize Lead 2 independently
+        m2, s2 = np.mean(lead2), np.std(lead2)
+        if s2 > 0:
+            lead2 = (lead2 - m2) / s2
+            
+        # Re-concatenate the normalized leads
+        normalized_features.append(np.concatenate((lead1, lead2)))
         
-    return np.array(X_data)
+    return np.array(normalized_features)
