@@ -1,0 +1,286 @@
+2026-09-19 00:55:24,358 - ======================================================
+2026-09-19 00:55:24,358 - STARTING ECG MORPHOLOGY & PREPROCESSING PIPELINE
+2026-09-19 00:55:24,358 - ======================================================
+2026-09-19 00:55:24,391 - --- Processing Patient Record 101 ---
+2026-09-19 00:55:24,391 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:24,408 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:24,414 - Phase 3 (Extraction): Segmented 1859 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:24,470 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:24,470 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:24,501 - --- Processing Patient Record 106 ---
+2026-09-19 00:55:24,501 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:24,517 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:24,523 - Phase 3 (Extraction): Segmented 1992 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:24,580 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:24,580 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:24,607 - --- Processing Patient Record 108 ---
+2026-09-19 00:55:24,607 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:24,621 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:24,626 - Phase 3 (Extraction): Segmented 1740 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:24,676 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:24,676 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:24,705 - --- Processing Patient Record 109 ---
+2026-09-19 00:55:24,705 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:24,717 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:24,723 - Phase 3 (Extraction): Segmented 2530 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:24,794 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:24,795 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:24,824 - --- Processing Patient Record 112 ---
+2026-09-19 00:55:24,824 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:24,836 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:24,843 - Phase 3 (Extraction): Segmented 2529 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:24,915 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:24,915 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:24,942 - --- Processing Patient Record 114 ---
+2026-09-19 00:55:24,942 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:24,957 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:24,962 - Phase 3 (Extraction): Segmented 1874 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:25,015 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:25,015 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:25,042 - --- Processing Patient Record 115 ---
+2026-09-19 00:55:25,043 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:25,054 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:25,060 - Phase 3 (Extraction): Segmented 1947 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:25,115 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:25,115 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:25,144 - --- Processing Patient Record 116 ---
+2026-09-19 00:55:25,144 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:25,158 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:25,166 - Phase 3 (Extraction): Segmented 2406 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:25,234 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:25,234 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:25,262 - --- Processing Patient Record 118 ---
+2026-09-19 00:55:25,262 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:25,274 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:25,280 - Phase 3 (Extraction): Segmented 2263 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:25,345 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:25,345 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:25,373 - --- Processing Patient Record 119 ---
+2026-09-19 00:55:25,373 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:25,387 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:25,393 - Phase 3 (Extraction): Segmented 1891 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:25,446 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:25,446 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:25,475 - --- Processing Patient Record 122 ---
+2026-09-19 00:55:25,475 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:25,487 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:25,493 - Phase 3 (Extraction): Segmented 2472 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:25,563 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:25,563 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:25,589 - --- Processing Patient Record 124 ---
+2026-09-19 00:55:25,589 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:25,604 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:25,608 - Phase 3 (Extraction): Segmented 1615 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:25,654 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:25,654 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:25,680 - --- Processing Patient Record 201 ---
+2026-09-19 00:55:25,681 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:25,695 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:25,700 - Phase 3 (Extraction): Segmented 1928 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:25,758 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:25,758 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:25,788 - --- Processing Patient Record 203 ---
+2026-09-19 00:55:25,788 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:25,804 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:25,813 - Phase 3 (Extraction): Segmented 2855 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:25,895 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:25,895 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:25,925 - --- Processing Patient Record 205 ---
+2026-09-19 00:55:25,925 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:25,937 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:25,944 - Phase 3 (Extraction): Segmented 2632 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:26,020 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:26,020 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:26,048 - --- Processing Patient Record 207 ---
+2026-09-19 00:55:26,048 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:26,063 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:26,069 - Phase 3 (Extraction): Segmented 1848 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:26,121 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:26,121 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:26,151 - --- Processing Patient Record 208 ---
+2026-09-19 00:55:26,152 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:26,164 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:26,171 - Phase 3 (Extraction): Segmented 2888 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:26,252 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:26,253 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:26,282 - --- Processing Patient Record 209 ---
+2026-09-19 00:55:26,282 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:26,307 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:26,315 - Phase 3 (Extraction): Segmented 2961 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:26,399 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:26,400 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:26,431 - --- Processing Patient Record 215 ---
+2026-09-19 00:55:26,431 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:26,450 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:26,459 - Phase 3 (Extraction): Segmented 3325 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:26,553 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:26,553 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:26,580 - --- Processing Patient Record 220 ---
+2026-09-19 00:55:26,580 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:26,597 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:26,602 - Phase 3 (Extraction): Segmented 2029 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:26,660 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:26,660 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:26,689 - --- Processing Patient Record 223 ---
+2026-09-19 00:55:26,689 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:26,701 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:26,708 - Phase 3 (Extraction): Segmented 2587 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:26,798 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:26,798 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:26,828 - --- Processing Patient Record 230 ---
+2026-09-19 00:55:26,829 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:26,847 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:26,853 - Phase 3 (Extraction): Segmented 2191 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:26,915 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:26,915 - Phase 5 (Routing): Patient assigned to TRAIN set (DS1).
+2026-09-19 00:55:26,943 - --- Processing Patient Record 100 ---
+2026-09-19 00:55:26,943 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:26,968 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:26,975 - Phase 3 (Extraction): Segmented 2271 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:27,039 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:27,039 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:27,067 - --- Processing Patient Record 103 ---
+2026-09-19 00:55:27,067 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:27,080 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:27,086 - Phase 3 (Extraction): Segmented 2081 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:27,145 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:27,145 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:27,173 - --- Processing Patient Record 104 ---
+2026-09-19 00:55:27,173 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:27,203 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:27,209 - Phase 3 (Extraction): Segmented 2213 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:27,271 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:27,272 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:27,302 - --- Processing Patient Record 105 ---
+2026-09-19 00:55:27,302 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:27,329 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:27,336 - Phase 3 (Extraction): Segmented 2498 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:27,406 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:27,407 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:27,447 - --- Processing Patient Record 111 ---
+2026-09-19 00:55:27,447 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:27,460 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:27,467 - Phase 3 (Extraction): Segmented 2122 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:27,528 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:27,529 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:27,555 - --- Processing Patient Record 113 ---
+2026-09-19 00:55:27,555 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:27,572 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:27,577 - Phase 3 (Extraction): Segmented 1794 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:27,628 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:27,628 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:27,654 - --- Processing Patient Record 117 ---
+2026-09-19 00:55:27,654 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:27,694 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:27,698 - Phase 3 (Extraction): Segmented 1534 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:27,742 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:27,742 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:27,769 - --- Processing Patient Record 121 ---
+2026-09-19 00:55:27,769 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:27,781 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:27,787 - Phase 3 (Extraction): Segmented 1859 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:27,839 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:27,839 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:27,865 - --- Processing Patient Record 123 ---
+2026-09-19 00:55:27,865 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:27,892 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:27,896 - Phase 3 (Extraction): Segmented 1516 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:27,940 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:27,940 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:27,970 - --- Processing Patient Record 200 ---
+2026-09-19 00:55:27,970 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:27,992 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:27,999 - Phase 3 (Extraction): Segmented 2496 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:28,069 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:28,070 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:28,097 - --- Processing Patient Record 202 ---
+2026-09-19 00:55:28,097 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:28,109 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:28,115 - Phase 3 (Extraction): Segmented 2129 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:28,175 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:28,175 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:28,203 - --- Processing Patient Record 210 ---
+2026-09-19 00:55:28,203 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:28,220 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:28,227 - Phase 3 (Extraction): Segmented 2625 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:28,301 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:28,301 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:28,330 - --- Processing Patient Record 212 ---
+2026-09-19 00:55:28,330 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:28,356 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:28,363 - Phase 3 (Extraction): Segmented 2736 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:28,440 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:28,440 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:28,471 - --- Processing Patient Record 213 ---
+2026-09-19 00:55:28,471 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:28,488 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:28,496 - Phase 3 (Extraction): Segmented 3218 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:28,586 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:28,586 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:28,614 - --- Processing Patient Record 214 ---
+2026-09-19 00:55:28,614 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:28,626 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:28,632 - Phase 3 (Extraction): Segmented 2229 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:28,695 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:28,695 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:28,722 - --- Processing Patient Record 219 ---
+2026-09-19 00:55:28,722 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:28,735 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:28,740 - Phase 3 (Extraction): Segmented 2017 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:28,797 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:28,797 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:28,825 - --- Processing Patient Record 221 ---
+2026-09-19 00:55:28,825 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:28,851 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:28,858 - Phase 3 (Extraction): Segmented 2397 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:28,925 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:28,925 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:28,955 - --- Processing Patient Record 222 ---
+2026-09-19 00:55:28,955 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:28,972 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:28,978 - Phase 3 (Extraction): Segmented 2391 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:29,046 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:29,046 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:29,073 - --- Processing Patient Record 228 ---
+2026-09-19 00:55:29,074 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:29,085 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:29,091 - Phase 3 (Extraction): Segmented 2026 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:29,148 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:29,148 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:29,177 - --- Processing Patient Record 231 ---
+2026-09-19 00:55:29,177 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:29,191 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:29,196 - Phase 3 (Extraction): Segmented 1569 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:29,240 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:29,240 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:29,265 - --- Processing Patient Record 232 ---
+2026-09-19 00:55:29,266 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:29,280 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:29,285 - Phase 3 (Extraction): Segmented 1768 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:29,335 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:29,335 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:29,366 - --- Processing Patient Record 233 ---
+2026-09-19 00:55:29,366 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:29,377 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:29,385 - Phase 3 (Extraction): Segmented 3006 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:29,471 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:29,471 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:29,501 - --- Processing Patient Record 234 ---
+2026-09-19 00:55:29,501 - Phase 1 (Input): Loaded raw continuous ECG signal. Shape: (650000, 2). Represents ~30 mins of 2-lead recordings at 360Hz.
+2026-09-19 00:55:29,515 - Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. The signal's isoelectric baseline is now completely flat.
+2026-09-19 00:55:29,522 - Phase 3 (Extraction): Segmented 2746 valid beats using R-peaks. Effect: Morphed continuous signal into discrete 198-sample windows. Combined Lead 1 and Lead 2 into a 396-dimensional morphological vector.
+2026-09-19 00:55:29,599 - Phase 4 (Normalization): Applied independent Z-score normalization per lead. Effect: Scaled varying peak amplitudes down to a standard range. The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.
+2026-09-19 00:55:29,599 - Phase 5 (Routing): Patient assigned to TEST set (DS2).
+2026-09-19 00:55:29,812 - ======================================================
+2026-09-19 00:55:29,812 - GLOBAL TRAIN SET AGGREGATED. Shape: (50362, 396)
+2026-09-19 00:55:29,812 - ======================================================
+2026-09-19 00:55:29,812 - Phase 6 (Augmentation): Balancing dataset via SMOTE & Transforms...
+2026-09-19 00:55:29,816 - Class distribution before augmentation: {np.int64(0): 45402, np.int64(1): 922, np.int64(4): 4, np.int64(2): 3638, np.int64(3): 396}
+2026-09-19 00:55:29,817 - Using SMOTE with k_neighbors=3
+2026-09-19 00:55:32,669 - Class distribution after augmentation: {np.int64(0): 45402, np.int64(1): 45402, np.int64(4): 45402, np.int64(2): 45402, np.int64(3): 45402}
+2026-09-19 00:55:34,149 - Effect: SMOTE mathematically synthesized new morphological 'twins' for rare arrhythmias. Random Gaussian noise and signal shifting were injected to force the model to ignore minor artifacts. New balanced Train Shape: (227010, 396).
+2026-09-19 00:55:34,150 - Phase 7 (Global Scaling): Fitting StandardScaler on training data...
+2026-09-19 00:55:35,311 - Effect: Shifted the entire 396-dimensional space to zero-mean and unit-variance. This ensures the downstream SVM and VQC classifiers process all time-steps fairly, morphing the final data into a perfectly standardized input tensor.
+2026-09-19 00:55:35,311 - Phase 8 (Export): Saving final morphed matrices to disk...
+2026-09-19 00:55:35,991 - PIPELINE COMPLETE! Final data exported to processed_data/
+2026-09-19 00:55:35,992 - Full transformation log saved to logs/morphology_pipeline_20260919_005524.log
