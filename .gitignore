@@ -1,1 +1,6 @@
 data/mit-bih-arrhythmia-database-1.0.0.zip
+data/
+venv/
+*__pycache__
+.python-version
+processed_data/
