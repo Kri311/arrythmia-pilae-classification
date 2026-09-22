@@ -1,0 +1,25 @@
+======================================================
+STARTING HYBRID SVM + VQC CLASSIFICATION (GPU ACCELERATED)
+======================================================
+PyTorch Compute Device: CUDA
+Loading 42-dim compressed features from /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/pilae/extracted_features...
+Loading pre-trained Classical SVM...
+Total Train Samples: 227010
+SVM handled confidently: 226119
+Routed to Quantum Circuit (Ambiguous): 891
+Compressing ambiguous samples to 8 dimensions for Quantum Angle Embedding...
+Initializing VQC with 8 Qubits and 2 Entangling Layers...
+Training VQC on ambiguous samples...
+Epoch 1/10 | Quantum Loss: 1.4687
+Epoch 2/10 | Quantum Loss: 1.4552
+Epoch 3/10 | Quantum Loss: 1.4418
+Epoch 4/10 | Quantum Loss: 1.4284
+Epoch 5/10 | Quantum Loss: 1.4151
+Epoch 6/10 | Quantum Loss: 1.4019
+Epoch 7/10 | Quantum Loss: 1.3887
+Epoch 8/10 | Quantum Loss: 1.3755
+Epoch 9/10 | Quantum Loss: 1.3624
+Epoch 10/10 | Quantum Loss: 1.3492
+Quantum Training Complete!
+
+Evaluating Hybrid System on Unseen Test Data...

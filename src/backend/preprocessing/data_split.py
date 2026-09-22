@@ -1,18 +1,29 @@
-import wfdb
-import numpy as np
+"""
+Data splitting module for inter-patient ECG records.
+
+Loads ECG recordings, processes individual beats (filtering, segmentation,
+normalization), and partitions data into train, validation, and test sets
+following the inter-patient De Chazal protocol.
+"""
 import logging
+from collections import Counter
+import numpy as np
+import wfdb
+
 import config
-from noise_removal import apply_bandpass_filter
 from feature_extraction import extract_beats
+from noise_removal import apply_bandpass_filter
 from normalisation import per_beat_zscore_normalization
 
 logger = logging.getLogger(__name__)
 
+
 def load_and_split_data():
     X_train, y_train = [], []
+    X_val, y_val = [], []
     X_test, y_test = [], []
     
-    all_records = config.DS1_TRAIN + config.DS2_TEST
+    all_records = config.DS1_TRAIN + config.DS1_VAL + config.DS2_TEST
     
     for record_id in all_records:
         record_path = f"{config.DATA_DIR}/{record_id}"
@@ -65,9 +76,18 @@ def load_and_split_data():
             X_train.extend(norm_features)
             y_train.extend(labels)
             logger.info("Phase 5 (Routing): Patient assigned to TRAIN set (DS1).")
+        elif record_id in config.DS1_VAL:
+            X_val.extend(norm_features)
+            y_val.extend(labels)
+            logger.info("Phase 5 (Routing): Patient assigned to VALIDATION set (DS1-VAL).")
         else:
             X_test.extend(norm_features)
             y_test.extend(labels)
             logger.info("Phase 5 (Routing): Patient assigned to TEST set (DS2).")
+
+    # Log raw class distribution for each split
+    logger.info(f"Train class distribution (raw): {dict(sorted(Counter(y_train).items()))}")
+    logger.info(f"Val class distribution (raw): {dict(sorted(Counter(y_val).items()))}")
+    logger.info(f"Test class distribution (raw): {dict(sorted(Counter(y_test).items()))}")
             
-    return np.array(X_train), np.array(X_test), np.array(y_train), np.array(y_test)
+    return np.array(X_train), np.array(X_val), np.array(X_test), np.array(y_train), np.array(y_val), np.array(y_test)

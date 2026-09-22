@@ -1,0 +1,10 @@
+======================================================
+STARTING HYBRID SVM + VQC CLASSIFICATION (GPU ACCELERATED)
+======================================================
+PyTorch Compute Device: CUDA
+Loading 42-dim compressed features from /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/pilae/extracted_features...
+Loading pre-trained Classical SVM...
+Total Train Samples: 227010
+SVM handled confidently: 227010
+Routed to Quantum Circuit (Ambiguous): 0
+No ambiguous samples found! Tau threshold might be too low.

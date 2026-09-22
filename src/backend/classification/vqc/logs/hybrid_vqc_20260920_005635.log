@@ -1,0 +1,24 @@
+============================================================
+HYBRID RBF_SVM + VQC CLASSIFICATION
+Router: rbf_svm | τ: 0.8 | Routing: probability
+VQC: 8 qubits, 2 layers, 100 max epochs
+============================================================
+PyTorch Compute Device: CUDA
+Loading features from /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/pilae/extracted_features...
+Train: (41038, 42), Val: (9324, 42), Test: (51241, 42), Classes: 5
+Loading router model: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/saved_models/rbf_svm_calibrated.pkl
+
+--- TRAIN SET ROUTING (τ=0.8) ---
+Total:     41038
+Classical: 40905 (99.7%)
+VQC:       133 (0.3%)
+
+--- VAL SET ROUTING (τ=0.8) ---
+Total:     9324
+Classical: 7923 (85.0%)
+VQC:       1401 (15.0%)
+Initializing VQC: 8 qubits, 2 layers, 5 classes
+Applying VQC PCA: 42 → 8 dimensions (fit on VQC training data)
+VQC class weights: {0: np.float64(0.021), 1: np.float64(2.261), 2: np.float64(0.133), 3: np.float64(0.323), 4: np.float64(2.261)}
+Training VQC on 133 samples over up to 100 epochs (patience=15)...
+Epoch 1/100 | Train Loss: 1.7507 | Val Loss: 1.6006 | LR: 0.009998

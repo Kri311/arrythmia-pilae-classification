@@ -1,0 +1,158 @@
+======================================================
+STARTING CLASSICAL CLASSIFICATION BENCHMARKING
+======================================================
+Loading 42-dim compressed features from /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/pilae/extracted_features...
+Train set: (227010, 42), Test set: (51241, 42)
+Training Linear SVM (Primary Pre-Classifier) (This may take a moment)...
+Predicting on unseen test data with Linear SVM (Primary Pre-Classifier)...
+
+============================================================
+EVALUATION RESULTS: Linear SVM (Primary Pre-Classifier)
+============================================================
+Accuracy: 45.99%
+
+Classification Report (Precision, Recall, F1-Score):
+              precision    recall  f1-score   support
+
+           0     0.9164    0.4776    0.6279     43896
+           1     0.0161    0.1208    0.0285      1813
+           2     0.3571    0.7253    0.4786      3091
+           3     0.0162    0.3549    0.0310       386
+           4     0.0286    0.0010    0.0019      2055
+
+    accuracy                         0.4599     51241
+   macro avg     0.2669    0.3359    0.2336     51241
+weighted avg     0.8084    0.4599    0.5681     51241
+
+Confusion Matrix:
+[[20964 12611  2167  8098    56]
+ [ 1406   219   153    34     1]
+ [  262   395  2242   181    11]
+ [  224     6    19   137     0]
+ [   20   335  1697     1     2]]
+------------------------------------------------------------
+
+>>> EXTRACTING SVM CONFIDENCE SCORES FOR FUTURE VQC ROUTING <<<
+Example raw signed distances for the first 3 test samples (Each column is a class):
+[[ -0.411   0.4    -1.311  -3.64  -15.592]
+ [ -0.683   0.537  -0.917  -3.418 -16.019]
+ [ -0.374   0.293  -1.311  -3.65  -15.315]]
+We will use the absolute value of these distances |d(z)| to trigger the Quantum Circuit later!
+
+Training Logistic Regression (This may take a moment)...
+Predicting on unseen test data with Logistic Regression...
+
+============================================================
+EVALUATION RESULTS: Logistic Regression
+============================================================
+Accuracy: 51.57%
+
+Classification Report (Precision, Recall, F1-Score):
+              precision    recall  f1-score   support
+
+           0     0.9260    0.5450    0.6862     43896
+           1     0.0172    0.1076    0.0297      1813
+           2     0.3626    0.7095    0.4799      3091
+           3     0.0137    0.2824    0.0261       386
+           4     0.0366    0.0015    0.0028      2055
+
+    accuracy                         0.5157     51241
+   macro avg     0.2712    0.3292    0.2449     51241
+weighted avg     0.8173    0.5157    0.6181     51241
+
+Confusion Matrix:
+[[23924 10398  1912  7606    56]
+ [ 1329   195   242    46     1]
+ [  311   363  2193   202    22]
+ [  258     4    15   109     0]
+ [   15   350  1686     1     3]]
+------------------------------------------------------------
+
+Training Decision Tree (This may take a moment)...
+Predicting on unseen test data with Decision Tree...
+
+============================================================
+EVALUATION RESULTS: Decision Tree
+============================================================
+Accuracy: 65.25%
+
+Classification Report (Precision, Recall, F1-Score):
+              precision    recall  f1-score   support
+
+           0     0.9268    0.7246    0.8134     43896
+           1     0.0216    0.0535    0.0308      1813
+           2     0.1405    0.4597    0.2152      3091
+           3     0.0484    0.2798    0.0825       386
+           4     0.0000    0.0000    0.0000      2055
+
+    accuracy                         0.6525     51241
+   macro avg     0.2275    0.3035    0.2284     51241
+weighted avg     0.8036    0.6525    0.7115     51241
+
+Confusion Matrix:
+[[31809  4002  6339  1666    80]
+ [  318    97  1359    36     3]
+ [  914   336  1421   411     9]
+ [  128     8   142   108     0]
+ [ 1151    42   852    10     0]]
+------------------------------------------------------------
+
+Training Random Forest (This may take a moment)...
+Predicting on unseen test data with Random Forest...
+
+============================================================
+EVALUATION RESULTS: Random Forest
+============================================================
+Accuracy: 82.68%
+
+Classification Report (Precision, Recall, F1-Score):
+              precision    recall  f1-score   support
+
+           0     0.9418    0.9137    0.9276     43896
+           1     0.1792    0.0237    0.0419      1813
+           2     0.2620    0.6817    0.3785      3091
+           3     0.2869    0.2772    0.2819       386
+           4     0.0000    0.0000    0.0000      2055
+
+    accuracy                         0.8268     51241
+   macro avg     0.3340    0.3793    0.3260     51241
+weighted avg     0.8311    0.8268    0.8210     51241
+
+Confusion Matrix:
+[[40108   165  3461   162     0]
+ [  877    43   893     0     0]
+ [  868    12  2107   104     0]
+ [  256     0    23   107     0]
+ [  476    20  1559     0     0]]
+------------------------------------------------------------
+
+Training XGBoost (This may take a moment)...
+Predicting on unseen test data with XGBoost...
+
+============================================================
+EVALUATION RESULTS: XGBoost
+============================================================
+Accuracy: 77.78%
+
+Classification Report (Precision, Recall, F1-Score):
+              precision    recall  f1-score   support
+
+           0     0.9531    0.8463    0.8965     43896
+           1     0.0340    0.0651    0.0447      1813
+           2     0.3174    0.7881    0.4525      3091
+           3     0.1418    0.3886    0.2078       386
+           4     0.0000    0.0000    0.0000      2055
+
+    accuracy                         0.7778     51241
+   macro avg     0.2893    0.4176    0.3203     51241
+weighted avg     0.8379    0.7778    0.7985     51241
+
+Confusion Matrix:
+[[37149  3084  2824   780    59]
+ [  908   118   778     8     1]
+ [  481    57  2436   117     0]
+ [  214     0    22   150     0]
+ [  224   212  1616     3     0]]
+------------------------------------------------------------
+
+All classical models trained, evaluated, and saved to disk.

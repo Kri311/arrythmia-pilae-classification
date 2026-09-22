@@ -1,0 +1,55 @@
+======================================================
+STARTING HYBRID SVM + VQC CLASSIFICATION (GPU ACCELERATED)
+======================================================
+PyTorch Compute Device: CUDA
+Loading 42-dim compressed features from /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/pilae/extracted_features...
+Loading pre-trained Classical SVM...
+Total Train Samples: 227010
+SVM handled confidently: 226119
+Routed to Quantum Circuit (Ambiguous): 891
+Compressing ambiguous samples to 8 dimensions for Quantum Angle Embedding...
+Initializing VQC with 8 Qubits and 2 Entangling Layers...
+Training VQC on ambiguous samples...
+Epoch 1/10 | Quantum Loss: 1.6046
+Epoch 2/10 | Quantum Loss: 1.5928
+Epoch 3/10 | Quantum Loss: 1.5813
+Epoch 4/10 | Quantum Loss: 1.5701
+Epoch 5/10 | Quantum Loss: 1.5591
+Epoch 6/10 | Quantum Loss: 1.5484
+Epoch 7/10 | Quantum Loss: 1.5380
+Epoch 8/10 | Quantum Loss: 1.5278
+Epoch 9/10 | Quantum Loss: 1.5178
+Epoch 10/10 | Quantum Loss: 1.5080
+Quantum Training Complete!
+
+Evaluating Hybrid System on Unseen Test Data...
+Test samples delegated to VQC: 30 out of 51241
+
+=== HYBRID SVM+VQC EVALUATION METRICS ===
+Accuracy: 45.99%
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.9163    0.4776    0.6279     43896
+           1     0.0162    0.1208    0.0285      1813
+           2     0.3570    0.7250    0.4784      3091
+           3     0.0162    0.3549    0.0310       386
+           4     0.0215    0.0010    0.0019      2055
+
+    accuracy                         0.4599     51241
+   macro avg     0.2655    0.3359    0.2336     51241
+weighted avg     0.8081    0.4599    0.5681     51241
+
+Confusion Matrix:
+[[20965 12608  2167  8093    63]
+ [ 1406   219   153    34     1]
+ [  264   378  2241   181    27]
+ [  224     6    19   137     0]
+ [   20   335  1697     1     2]]
+[[20965 12608  2167  8093    63]
+ [ 1406   219   153    34     1]
+ [  264   378  2241   181    27]
+ [  224     6    19   137     0]
+ [   20   335  1697     1     2]]
+Saved Confusion Matrix Heatmap to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/vqc/evaluation_plots/hybrid_svm_vqc_heatmap.png

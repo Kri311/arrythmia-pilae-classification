@@ -1,0 +1,81 @@
+============================================================
+HYBRID RBF_SVM + VQC CLASSIFICATION (Task: multi)
+Router: rbf_svm | τ: 0.8 | Routing: probability
+VQC: 8 qubits, 2 layers, 100 max epochs
+============================================================
+PyTorch Compute Device: CUDA
+Loading features from /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/pilae/extracted_features...
+Train: (41038, 42), Val: (9324, 42), Test: (51241, 42), Classes: 5
+Loading router model: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/saved_models/rbf_svm_calibrated.pkl
+
+--- TRAIN SET ROUTING (τ=0.8) ---
+Total:     41038
+Classical: 40905 (99.7%)
+VQC:       133 (0.3%)
+
+--- VAL SET ROUTING (τ=0.8) ---
+Total:     9324
+Classical: 7923 (85.0%)
+VQC:       1401 (15.0%)
+Initializing VQC: 8 qubits, 2 layers, 5 classes
+Applying VQC PCA: 42 → 8 dimensions (fit on VQC training data)
+VQC class weights: {0: np.float64(0.021), 1: np.float64(2.261), 2: np.float64(0.133), 3: np.float64(0.323), 4: np.float64(2.261)}
+Training VQC on 133 samples over up to 100 epochs (patience=15)...
+Epoch 1/100 | Train Loss: 1.6641 | Val Loss: 1.7848 | LR: 0.009998
+Epoch 10/100 | Train Loss: 1.4340 | Val Loss: 2.1411 | LR: 0.009758
+Early stopping at epoch 16 (best val loss: 1.7848)
+VQC Training Complete. Final train loss: 1.2613, Best val loss: 1.7848
+VQC training time: 594.01s
+
+============================================================
+FINAL TEST EVALUATION (τ = 0.8)
+============================================================
+
+--- TEST SET ROUTING (τ=0.8) ---
+Total:     51241
+Classical: 40768 (79.6%)
+VQC:       10473 (20.4%)
+
+Classical-only accuracy (no VQC): 68.64%
+VQC accuracy (on routed samples): 5.92%
+
+============================================================
+EVALUATION: Hybrid_rbf_svm_tau0.8 (TEST)
+============================================================
+Overall Accuracy:     66.12%
+Balanced Accuracy:    34.39%
+Macro-F1:             0.2338
+Weighted-F1:          0.7224
+MCC:                  0.2893
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.9717    0.7109    0.8211     43896
+           S     0.0945    0.0143    0.0249      1813
+           V     0.1803    0.8360    0.2967      3091
+           F     0.0139    0.1580    0.0256       386
+           Q     0.0069    0.0005    0.0009      2055
+
+    accuracy                         0.6612     51241
+   macro avg     0.2535    0.3439    0.2338     51241
+weighted avg     0.8470    0.6612    0.7224     51241
+
+Confusion Matrix:
+[[31206   237  9732  2698    23]
+ [  257    26   656   872     2]
+ [  161     1  2584   227   118]
+ [  164     0   161    61     0]
+ [  326    11  1197   520     1]]
+
+Dominant Error Transitions:
+  N→S: 237/43896 (0.5%)
+  N→F: 2698/43896 (6.1%)
+  S→N: 257/1813 (14.2%)
+  Q→V: 1197/2055 (58.2%)
+  S→V: 656/1813 (36.2%)
+  V→N: 161/3091 (5.2%)
+Saved heatmap: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/vqc/evaluation_plots/hybrid_rbf_svm_tau0.8_test_heatmap.png
+Training time:  594.01s
+Inference time: 228.9120s
+VQC model saved to /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/vqc/saved_models/

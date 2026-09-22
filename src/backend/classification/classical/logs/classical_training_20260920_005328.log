@@ -1,0 +1,571 @@
+============================================================
+STARTING CLASSICAL CLASSIFICATION BENCHMARKING
+============================================================
+Loading compressed features from /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/pilae/extracted_features...
+Train: (41038, 42), Val: (9324, 42), Test: (51241, 42)
+Loaded class weights: {0: np.float64(0.21803209010732122), 1: np.float64(33.364227642276425), 2: np.float64(2.9705392689106045), 3: np.float64(21.54225721784777), 4: np.float64(2051.9)}
+
+############################################################
+Training Linear SVM (Primary Pre-Classifier)...
+############################################################
+Training time: 1.22s
+Inference time (test set): 0.0046s
+
+============================================================
+EVALUATION RESULTS: Linear SVM (Primary Pre-Classifier) (VAL SET)
+============================================================
+Overall Accuracy:     70.01%
+Balanced Accuracy:    48.44%
+Macro-F1:             0.2606
+Weighted-F1:          0.7228
+MCC:                  0.2090
+
+Per-Class Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.8825    0.7703    0.8226      7758
+           S     0.2353    0.0533    0.0869       676
+           V     0.2417    0.5806    0.3413       875
+           F     0.0276    0.5333    0.0525        15
+           Q     0.0000    0.0000    0.0000         0
+
+    accuracy                         0.7001      9324
+   macro avg     0.2774    0.3875    0.2606      9324
+weighted avg     0.7740    0.7001    0.7228      9324
+
+Confusion Matrix:
+[[5976  115 1468  195    4]
+ [ 492   36  123   24    1]
+ [ 301    2  508   63    1]
+ [   3    0    3    8    1]
+ [   0    0    0    0    0]]
+
+Dominant Error Transitions:
+  N→S: 115/7758 (1.5%)
+  N→F: 195/7758 (2.5%)
+  S→N: 492/676 (72.8%)
+  Q→V: 0/0 (0.0%)
+  S→V: 123/676 (18.2%)
+  V→N: 301/875 (34.4%)
+  F→N: 3/15 (20.0%)
+------------------------------------------------------------
+
+Saved Confusion Matrix Heatmap to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/evaluation_plots/linear_svm_primary_pre-classifier_val_heatmap.png
+
+============================================================
+EVALUATION RESULTS: Linear SVM (Primary Pre-Classifier) (TEST SET)
+============================================================
+Overall Accuracy:     81.89%
+Balanced Accuracy:    36.20%
+Macro-F1:             0.2950
+Weighted-F1:          0.8147
+MCC:                  0.3358
+
+Per-Class Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.9243    0.9092    0.9167     43896
+           S     0.0163    0.0055    0.0082      1813
+           V     0.3807    0.6260    0.4735      3091
+           F     0.0447    0.2694    0.0767       386
+           Q     0.0000    0.0000    0.0000      2055
+
+    accuracy                         0.8189     51241
+   macro avg     0.2732    0.3620    0.2950     51241
+weighted avg     0.8156    0.8189    0.8147     51241
+
+Confusion Matrix:
+[[39911   493  1444  2022    26]
+ [ 1704    10    58    36     5]
+ [  947    65  1935   140     4]
+ [  263     4    15   104     0]
+ [  357    43  1631    24     0]]
+
+Dominant Error Transitions:
+  N→S: 493/43896 (1.1%)
+  N→F: 2022/43896 (4.6%)
+  S→N: 1704/1813 (94.0%)
+  Q→V: 1631/2055 (79.4%)
+  S→V: 58/1813 (3.2%)
+  V→N: 947/3091 (30.6%)
+  F→N: 263/386 (68.1%)
+------------------------------------------------------------
+
+Saved Confusion Matrix Heatmap to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/evaluation_plots/linear_svm_primary_pre-classifier_test_heatmap.png
+Model saved to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/saved_models/linear_svm_primary_pre-classifier.pkl
+>>> EXTRACTING CONFIDENCE SCORES FOR FUTURE VQC ROUTING <<<
+Example raw decision function values for first 3 test samples:
+[[  1.018  -0.238  -1.543  -5.176  -9.648]
+ [  0.181   0.29   -0.765  -4.548 -10.834]
+ [  0.526   0.153  -1.18   -5.147  -9.826]]
+
+############################################################
+Training RBF SVM (Calibrated)...
+############################################################
+Training time: 48.55s
+Inference time (test set): 8.0384s
+Number of support vectors: 3773
+
+============================================================
+EVALUATION RESULTS: RBF SVM (Calibrated) (VAL SET)
+============================================================
+Overall Accuracy:     65.49%
+Balanced Accuracy:    54.90%
+Macro-F1:             0.3695
+Weighted-F1:          0.7058
+MCC:                  0.2812
+
+Per-Class Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.9091    0.6792    0.7775      7758
+           S     0.5404    0.1583    0.2449       676
+           V     0.2983    0.8251    0.4382       875
+           F     0.0088    0.5333    0.0173        15
+           Q     0.0000    0.0000    0.0000         0
+
+    accuracy                         0.6549      9324
+   macro avg     0.3513    0.4392    0.2956      9324
+weighted avg     0.8236    0.6549    0.7058      9324
+
+Confusion Matrix:
+[[5269   91 1517  881    0]
+ [ 385  107  175    9    0]
+ [ 141    0  722   12    0]
+ [   1    0    6    8    0]
+ [   0    0    0    0    0]]
+
+Dominant Error Transitions:
+  N→S: 91/7758 (1.2%)
+  N→F: 881/7758 (11.4%)
+  S→N: 385/676 (57.0%)
+  Q→V: 0/0 (0.0%)
+  S→V: 175/676 (25.9%)
+  V→N: 141/875 (16.1%)
+  F→N: 1/15 (6.7%)
+------------------------------------------------------------
+
+Saved Confusion Matrix Heatmap to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/evaluation_plots/rbf_svm_calibrated_val_heatmap.png
+
+============================================================
+EVALUATION RESULTS: RBF SVM (Calibrated) (TEST SET)
+============================================================
+Overall Accuracy:     68.64%
+Balanced Accuracy:    44.80%
+Macro-F1:             0.2719
+Weighted-F1:          0.7379
+MCC:                  0.3262
+
+Per-Class Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.9720    0.7289    0.8331     43896
+           S     0.1215    0.0667    0.0862      1813
+           V     0.2079    0.9236    0.3394      3091
+           F     0.0559    0.5207    0.1010       386
+           Q     0.0000    0.0000    0.0000      2055
+
+    accuracy                         0.6864     51241
+   macro avg     0.2715    0.4480    0.2719     51241
+weighted avg     0.8499    0.6864    0.7379     51241
+
+Confusion Matrix:
+[[31996   845  7740  3314     1]
+ [  267   121  1416     9     0]
+ [  160     7  2855    69     0]
+ [  164     1    20   201     0]
+ [  332    22  1700     1     0]]
+
+Dominant Error Transitions:
+  N→S: 845/43896 (1.9%)
+  N→F: 3314/43896 (7.5%)
+  S→N: 267/1813 (14.7%)
+  Q→V: 1700/2055 (82.7%)
+  S→V: 1416/1813 (78.1%)
+  V→N: 160/3091 (5.2%)
+  F→N: 164/386 (42.5%)
+------------------------------------------------------------
+
+Saved Confusion Matrix Heatmap to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/evaluation_plots/rbf_svm_calibrated_test_heatmap.png
+Model saved to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/saved_models/rbf_svm_calibrated.pkl
+>>> EXTRACTING CONFIDENCE SCORES FOR FUTURE VQC ROUTING <<<
+Example calibrated probabilities for first 3 test samples:
+[[0.999 0.001 0.    0.    0.   ]
+ [0.999 0.001 0.    0.    0.   ]
+ [0.999 0.001 0.    0.    0.   ]]
+Example raw decision function values for first 3 test samples:
+[[ 4.285  3.187  1.975  0.751 -0.268]
+ [ 4.284  3.154  2.136  0.747 -0.269]
+ [ 4.283  3.143  2.071  0.751 -0.263]]
+
+############################################################
+Training Logistic Regression...
+############################################################
+Training time: 10.99s
+Inference time (test set): 0.0149s
+
+============================================================
+EVALUATION RESULTS: Logistic Regression (VAL SET)
+============================================================
+Overall Accuracy:     43.65%
+Balanced Accuracy:    47.28%
+Macro-F1:             0.2195
+Weighted-F1:          0.5223
+MCC:                  0.1274
+
+Per-Class Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.8730    0.4278    0.5742      7758
+           S     0.0953    0.3565    0.1504       676
+           V     0.2600    0.5737    0.3578       875
+           F     0.0077    0.5333    0.0151        15
+           Q     0.0000    0.0000    0.0000         0
+
+    accuracy                         0.4365      9324
+   macro avg     0.2472    0.3783    0.2195      9324
+weighted avg     0.7577    0.4365    0.5223      9324
+
+Confusion Matrix:
+[[3319 2274 1315  842    8]
+ [ 239  241  111   76    9]
+ [ 241   13  502  117    2]
+ [   3    0    3    8    1]
+ [   0    0    0    0    0]]
+
+Dominant Error Transitions:
+  N→S: 2274/7758 (29.3%)
+  N→F: 842/7758 (10.9%)
+  S→N: 239/676 (35.4%)
+  Q→V: 0/0 (0.0%)
+  S→V: 111/676 (16.4%)
+  V→N: 241/875 (27.5%)
+  F→N: 3/15 (20.0%)
+------------------------------------------------------------
+
+Saved Confusion Matrix Heatmap to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/evaluation_plots/logistic_regression_val_heatmap.png
+
+============================================================
+EVALUATION RESULTS: Logistic Regression (TEST SET)
+============================================================
+Overall Accuracy:     49.19%
+Balanced Accuracy:    31.26%
+Macro-F1:             0.2312
+Weighted-F1:          0.5967
+MCC:                  0.1294
+
+Per-Class Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.9077    0.5234    0.6640     43896
+           S     0.0113    0.0579    0.0189      1813
+           V     0.3440    0.6445    0.4486      3091
+           F     0.0121    0.3368    0.0233       386
+           Q     0.0091    0.0005    0.0009      2055
+
+    accuracy                         0.4919     51241
+   macro avg     0.2569    0.3126    0.2312     51241
+weighted avg     0.7992    0.4919    0.5967     51241
+
+Confusion Matrix:
+[[22976  8600  2008 10221    91]
+ [ 1476   105   114   107    11]
+ [  549   266  1992   278     6]
+ [  225    11    19   130     1]
+ [   85   288  1657    24     1]]
+
+Dominant Error Transitions:
+  N→S: 8600/43896 (19.6%)
+  N→F: 10221/43896 (23.3%)
+  S→N: 1476/1813 (81.4%)
+  Q→V: 1657/2055 (80.6%)
+  S→V: 114/1813 (6.3%)
+  V→N: 549/3091 (17.8%)
+  F→N: 225/386 (58.3%)
+------------------------------------------------------------
+
+Saved Confusion Matrix Heatmap to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/evaluation_plots/logistic_regression_test_heatmap.png
+Model saved to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/saved_models/logistic_regression.pkl
+
+############################################################
+Training Decision Tree...
+############################################################
+Training time: 2.99s
+Inference time (test set): 0.0058s
+
+============================================================
+EVALUATION RESULTS: Decision Tree (VAL SET)
+============================================================
+Overall Accuracy:     69.08%
+Balanced Accuracy:    32.69%
+Macro-F1:             0.2393
+Weighted-F1:          0.7098
+MCC:                  0.1374
+
+Per-Class Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.8585    0.7713    0.8126      7758
+           S     0.5833    0.0621    0.1123       676
+           V     0.1903    0.4743    0.2716       875
+           F     0.0000    0.0000    0.0000        15
+           Q     0.0000    0.0000    0.0000         0
+
+    accuracy                         0.6908      9324
+   macro avg     0.3264    0.2615    0.2393      9324
+weighted avg     0.7745    0.6908    0.7098      9324
+
+Confusion Matrix:
+[[5984   22 1672   50   30]
+ [ 534   42   91    3    6]
+ [ 441    7  415   12    0]
+ [  11    1    3    0    0]
+ [   0    0    0    0    0]]
+
+Dominant Error Transitions:
+  N→S: 22/7758 (0.3%)
+  N→F: 50/7758 (0.6%)
+  S→N: 534/676 (79.0%)
+  Q→V: 0/0 (0.0%)
+  S→V: 91/676 (13.5%)
+  V→N: 441/875 (50.4%)
+  F→N: 11/15 (73.3%)
+------------------------------------------------------------
+
+Saved Confusion Matrix Heatmap to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/evaluation_plots/decision_tree_val_heatmap.png
+
+============================================================
+EVALUATION RESULTS: Decision Tree (TEST SET)
+============================================================
+Overall Accuracy:     68.06%
+Balanced Accuracy:    31.78%
+Macro-F1:             0.2481
+Weighted-F1:          0.7168
+MCC:                  0.1637
+
+Per-Class Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.9022    0.7498    0.8190     43896
+           S     0.0119    0.0044    0.0064      1813
+           V     0.1381    0.6037    0.2248      3091
+           F     0.1609    0.2306    0.1896       386
+           Q     0.0455    0.0005    0.0010      2055
+
+    accuracy                         0.6806     51241
+   macro avg     0.2517    0.3178    0.2481     51241
+weighted avg     0.7847    0.6806    0.7168     51241
+
+Confusion Matrix:
+[[32912   602  9952   414    16]
+ [  586     8  1210     5     4]
+ [ 1170    12  1866    42     1]
+ [  177    45    75    89     0]
+ [ 1635     6   410     3     1]]
+
+Dominant Error Transitions:
+  N→S: 602/43896 (1.4%)
+  N→F: 414/43896 (0.9%)
+  S→N: 586/1813 (32.3%)
+  Q→V: 410/2055 (20.0%)
+  S→V: 1210/1813 (66.7%)
+  V→N: 1170/3091 (37.9%)
+  F→N: 177/386 (45.9%)
+------------------------------------------------------------
+
+Saved Confusion Matrix Heatmap to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/evaluation_plots/decision_tree_test_heatmap.png
+Model saved to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/saved_models/decision_tree.pkl
+
+############################################################
+Training Random Forest...
+############################################################
+Training time: 5.95s
+Inference time (test set): 0.1448s
+Number of estimators/trees: 200
+
+============================================================
+EVALUATION RESULTS: Random Forest (VAL SET)
+============================================================
+Overall Accuracy:     70.68%
+Balanced Accuracy:    27.83%
+Macro-F1:             0.2560
+Weighted-F1:          0.7053
+MCC:                  0.0419
+
+Per-Class Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.8347    0.8159    0.8252      7758
+           S     0.0000    0.0000    0.0000       676
+           V     0.1495    0.2971    0.1989       875
+           F     0.0000    0.0000    0.0000        15
+           Q     0.0000    0.0000    0.0000         0
+
+    accuracy                         0.7068      9324
+   macro avg     0.1968    0.2226    0.2048      9324
+weighted avg     0.7085    0.7068    0.7053      9324
+
+Confusion Matrix:
+[[6330    0 1427    1    0]
+ [ 624    0   52    0    0]
+ [ 615    0  260    0    0]
+ [  15    0    0    0    0]
+ [   0    0    0    0    0]]
+
+Dominant Error Transitions:
+  N→S: 0/7758 (0.0%)
+  N→F: 1/7758 (0.0%)
+  S→N: 624/676 (92.3%)
+  Q→V: 0/0 (0.0%)
+  S→V: 52/676 (7.7%)
+  V→N: 615/875 (70.3%)
+  F→N: 15/15 (100.0%)
+------------------------------------------------------------
+
+Saved Confusion Matrix Heatmap to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/evaluation_plots/random_forest_val_heatmap.png
+
+============================================================
+EVALUATION RESULTS: Random Forest (TEST SET)
+============================================================
+Overall Accuracy:     82.91%
+Balanced Accuracy:    29.26%
+Macro-F1:             0.2750
+Weighted-F1:          0.8031
+MCC:                  0.2432
+
+Per-Class Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.8903    0.9344    0.9118     43896
+           S     0.0000    0.0000    0.0000      1813
+           V     0.2811    0.4665    0.3508      3091
+           F     0.5854    0.0622    0.1124       386
+           Q     0.0000    0.0000    0.0000      2055
+
+    accuracy                         0.8291     51241
+   macro avg     0.3514    0.2926    0.2750     51241
+weighted avg     0.7840    0.8291    0.8031     51241
+
+Confusion Matrix:
+[[41016     0  2880     0     0]
+ [ 1033     0   780     0     0]
+ [ 1632     0  1442    17     0]
+ [  353     0     9    24     0]
+ [ 2036     0    19     0     0]]
+
+Dominant Error Transitions:
+  N→S: 0/43896 (0.0%)
+  N→F: 0/43896 (0.0%)
+  S→N: 1033/1813 (57.0%)
+  Q→V: 19/2055 (0.9%)
+  S→V: 780/1813 (43.0%)
+  V→N: 1632/3091 (52.8%)
+  F→N: 353/386 (91.5%)
+------------------------------------------------------------
+
+Saved Confusion Matrix Heatmap to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/evaluation_plots/random_forest_test_heatmap.png
+Model saved to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/saved_models/random_forest.pkl
+
+############################################################
+Training XGBoost...
+############################################################
+Training time: 4.84s
+Inference time (test set): 0.0438s
+Number of estimators/trees: None
+
+============================================================
+EVALUATION RESULTS: XGBoost (VAL SET)
+============================================================
+Overall Accuracy:     68.60%
+Balanced Accuracy:    41.47%
+Macro-F1:             0.2614
+Weighted-F1:          0.7127
+MCC:                  0.2027
+
+Per-Class Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.8738    0.7453    0.8045      7758
+           S     0.6618    0.0666    0.1210       676
+           V     0.2573    0.6469    0.3681       875
+           F     0.0069    0.2000    0.0134        15
+           Q     0.0000    0.0000    0.0000         0
+
+    accuracy                         0.6860      9324
+   macro avg     0.3600    0.3317    0.2614      9324
+weighted avg     0.7992    0.6860    0.7127      9324
+
+Confusion Matrix:
+[[5782   23 1523  428    2]
+ [ 520   45  105    3    3]
+ [ 309    0  566    0    0]
+ [   6    0    6    3    0]
+ [   0    0    0    0    0]]
+
+Dominant Error Transitions:
+  N→S: 23/7758 (0.3%)
+  N→F: 428/7758 (5.5%)
+  S→N: 520/676 (76.9%)
+  Q→V: 0/0 (0.0%)
+  S→V: 105/676 (15.5%)
+  V→N: 309/875 (35.3%)
+  F→N: 6/15 (40.0%)
+------------------------------------------------------------
+
+Saved Confusion Matrix Heatmap to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/evaluation_plots/xgboost_val_heatmap.png
+
+============================================================
+EVALUATION RESULTS: XGBoost (TEST SET)
+============================================================
+Overall Accuracy:     70.22%
+Balanced Accuracy:    35.35%
+Macro-F1:             0.2489
+Weighted-F1:          0.7334
+MCC:                  0.2245
+
+Per-Class Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.9134    0.7625    0.8311     43896
+           S     0.1115    0.0193    0.0329      1813
+           V     0.2096    0.7758    0.3300      3091
+           F     0.0286    0.2098    0.0503       386
+           Q     0.0000    0.0000    0.0000      2055
+
+    accuracy                         0.7022     51241
+   macro avg     0.2526    0.3535    0.2489     51241
+weighted avg     0.7992    0.7022    0.7334     51241
+
+Confusion Matrix:
+[[33469   272  7462  2687     6]
+ [  398    35  1378     2     0]
+ [  626     3  2398    64     0]
+ [  227     0    78    81     0]
+ [ 1924     4   127     0     0]]
+
+Dominant Error Transitions:
+  N→S: 272/43896 (0.6%)
+  N→F: 2687/43896 (6.1%)
+  S→N: 398/1813 (22.0%)
+  Q→V: 127/2055 (6.2%)
+  S→V: 1378/1813 (76.0%)
+  V→N: 626/3091 (20.3%)
+  F→N: 227/386 (58.8%)
+------------------------------------------------------------
+
+Saved Confusion Matrix Heatmap to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/evaluation_plots/xgboost_test_heatmap.png
+Model saved to: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/saved_models/xgboost.pkl
+
+================================================================================
+CLASSICAL BASELINES — SUMMARY TABLE
+================================================================================
+Model                                     Val Acc  Val MF1 Test Acc Test MF1 Test MCC Train(s)
+--------------------------------------------------------------------------------
+Linear SVM (Primary Pre-Classifier)        70.01%   0.2606   81.89%   0.2950   0.3358    1.22s
+RBF SVM (Calibrated)                       65.49%   0.3695   68.64%   0.2719   0.3262   48.55s
+Logistic Regression                        43.65%   0.2195   49.19%   0.2312   0.1294   10.99s
+Decision Tree                              69.08%   0.2393   68.06%   0.2481   0.1637    2.99s
+Random Forest                              70.68%   0.2560   82.91%   0.2750   0.2432    5.95s
+XGBoost                                    68.60%   0.2614   70.22%   0.2489   0.2245    4.84s
+
+All classical models trained, evaluated, and saved to disk.

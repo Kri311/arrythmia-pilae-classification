@@ -1,0 +1,73 @@
+============================================================
+HYBRID LOGISTIC_REGRESSION + VQC CLASSIFICATION (Task: binary)
+Router: logistic_regression | τ: 0.75 | Routing: probability
+VQC: 8 qubits, 2 layers, 100 max epochs
+============================================================
+PyTorch Compute Device: CUDA
+Loading features from /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/pilae/extracted_features_binary...
+Train: (41038, 42), Val: (9324, 42), Test: (51241, 42), Classes: 2
+Loading router model: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/classical/saved_models_binary/logistic_regression.pkl
+
+--- TRAIN SET ROUTING (τ=0.75) ---
+Total:     41038
+Classical: 34541 (84.2%)
+VQC:       6497 (15.8%)
+
+--- VAL SET ROUTING (τ=0.75) ---
+Total:     9324
+Classical: 7106 (76.2%)
+VQC:       2218 (23.8%)
+Initializing VQC: 8 qubits, 2 layers, 2 classes
+Applying VQC PCA: 42 → 8 dimensions (fit on VQC training data)
+VQC class weights: {0: np.float64(0.174), 1: np.float64(1.826)}
+Training VQC on 6497 samples over up to 100 epochs (patience=15)...
+Epoch 1/100 | Train Loss: 0.6562 | Val Loss: 0.7962 | LR: 0.009998
+Epoch 10/100 | Train Loss: 0.3709 | Val Loss: 0.7248 | LR: 0.009758
+Epoch 20/100 | Train Loss: 0.3748 | Val Loss: 0.7166 | LR: 0.009055
+Epoch 30/100 | Train Loss: 0.3420 | Val Loss: 0.7964 | LR: 0.007960
+Early stopping at epoch 33 (best val loss: 0.7069)
+VQC Training Complete. Final train loss: 0.3612, Best val loss: 0.7069
+VQC training time: 12374.44s
+
+============================================================
+FINAL TEST EVALUATION (τ = 0.75)
+============================================================
+
+--- TEST SET ROUTING (τ=0.75) ---
+Total:     51241
+Classical: 31835 (62.1%)
+VQC:       19406 (37.9%)
+
+Classical-only accuracy (no VQC): 82.37%
+VQC accuracy (on routed samples): 61.32%
+
+============================================================
+EVALUATION: Hybrid_logistic_regression_tau0.75 (TEST)
+============================================================
+Overall Accuracy:     78.99%
+Balanced Accuracy:    79.04%
+Macro-F1:             0.6923
+Weighted-F1:          0.8159
+MCC:                  0.4469
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           N     0.9576    0.7897    0.8656     43896
+           A     0.3863    0.7912    0.5191      7345
+
+    accuracy                         0.7899     51241
+   macro avg     0.6719    0.7904    0.6923     51241
+weighted avg     0.8757    0.7899    0.8159     51241
+
+Confusion Matrix:
+[[34663  9233]
+ [ 1534  5811]]
+
+Dominant Error Transitions:
+  N→A: 9233/43896 (21.0%)
+  A→N: 1534/7345 (20.9%)
+Saved heatmap: /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/vqc/evaluation_plots/hybrid_logistic_regression_tau0.75_test_heatmap.png
+Training time:  12374.44s
+Inference time: 403.3341s
+VQC model saved to /home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/classification/vqc/saved_models_binary/
