@@ -843,22 +843,7 @@ Rewrite the file `/home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/prepr
 4. **`'smote_plus_weight'`**: Apply moderate SMOTE (same as above), then also compute class weights on the resulting distribution. Return both.
 
 Function signature:
-```python
-def augment_data(X_train, y_train, strategy='class_weight'):
-    """
-    Manages data imbalance using the specified strategy.
-    
-    Args:
-        X_train: Training features (numpy array)
-        y_train: Training labels (numpy array)
-        strategy: One of 'none', 'class_weight', 'moderate_smote', 'smote_plus_weight'
-    
-    Returns:
-        X_augmented: Augmented (or unchanged) training features
-        y_augmented: Augmented (or unchanged) training labels
-        class_weights: numpy array of per-class weights (or None if not applicable)
-    """
-```
+[CODE BLOCK REMOVED]
 
 Imports needed: `numpy`, `collections.Counter`, `imblearn.over_sampling.SMOTE`, `imblearn.over_sampling.RandomOverSampler`, `sklearn.utils.class_weight.compute_class_weight`, `logging`.
 
@@ -883,9 +868,7 @@ Rewrite the file `/home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/prepr
 7. Preserves the existing docstring style
 
 Function signature:
-```python
-def apply_global_scaling(X_train, X_val, X_test, output_dir=None):
-```
+[CODE BLOCK REMOVED]
 
 If `output_dir` is provided and not None, save the scaler there. Otherwise skip saving.
 
@@ -912,81 +895,7 @@ Rewrite the file `/home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/prepr
 
 Here is the current file content to base your rewrite on:
 
-```python
-import wfdb
-import numpy as np
-import logging
-import config
-from noise_removal import apply_bandpass_filter
-from feature_extraction import extract_beats
-from normalisation import per_beat_zscore_normalization
-
-logger = logging.getLogger(__name__)
-
-def load_and_split_data():
-    X_train, y_train = [], []
-    X_test, y_test = [], []
-    
-    all_records = config.DS1_TRAIN + config.DS2_TEST
-    
-    for record_id in all_records:
-        record_path = f"{config.DATA_DIR}/{record_id}"
-        
-        try:
-            record = wfdb.rdrecord(record_path)
-            annotation = wfdb.rdann(record_path, 'atr')
-        except Exception:
-            continue
-            
-        if record.p_signal.shape[1] < 2:
-            continue
-            
-        logger.info(f"--- Processing Patient Record {record_id} ---")
-        
-        # 1. Raw Data Input
-        raw_signal = record.p_signal
-        logger.info(f"Phase 1 (Input): Loaded raw continuous ECG signal. Shape: {raw_signal.shape}. "
-                    f"Represents ~30 mins of 2-lead recordings at 360Hz.")
-        
-        # 2. Noise Removal
-        filtered_signals = apply_bandpass_filter(raw_signal)
-        logger.info("Phase 2 (Filtering): Applied 0.5-45Hz Butterworth filter. "
-                    "Effect: Baseline wander (patient breathing drift) and electrical noise eliminated. "
-                    "The signal's isoelectric baseline is now completely flat.")
-        
-        # 3. Feature Extraction
-        r_peaks = annotation.sample
-        beat_types = annotation.symbol
-        sig_names = record.sig_name
-        
-        raw_features, labels = extract_beats(filtered_signals, r_peaks, beat_types, sig_names)
-        
-        if not raw_features:
-            logger.warning(f"Patient {record_id}: No valid beats extracted (likely extreme heart rate overlap).")
-            continue
-            
-        logger.info(f"Phase 3 (Extraction): Segmented {len(raw_features)} valid beats using R-peaks. "
-                    f"Effect: Morphed continuous signal into discrete 198-sample windows. "
-                    f"Combined Lead 1 and Lead 2 into a {len(raw_features[0])}-dimensional morphological vector.")
-        
-        # 4. Normalization
-        norm_features = per_beat_zscore_normalization(raw_features)
-        logger.info("Phase 4 (Normalization): Applied independent Z-score normalization per lead. "
-                    "Effect: Scaled varying peak amplitudes down to a standard range. "
-                    "The model will now learn the physical *shape* of the heartbeat rather than its raw voltage size.")
-        
-        # 5. Patient-Wise Split
-        if record_id in config.DS1_TRAIN:
-            X_train.extend(norm_features)
-            y_train.extend(labels)
-            logger.info("Phase 5 (Routing): Patient assigned to TRAIN set (DS1).")
-        else:
-            X_test.extend(norm_features)
-            y_test.extend(labels)
-            logger.info("Phase 5 (Routing): Patient assigned to TEST set (DS2).")
-            
-    return np.array(X_train), np.array(X_test), np.array(y_train), np.array(y_test)
-```
+[CODE BLOCK REMOVED]
 
 Overwrite the file at `/home/owl/math-sem4/arrythmia_hybrid_revised/src/backend/preprocessing/data_split.py`.
 
@@ -1119,71 +1028,7 @@ ___
 **Prompt:**
 ## Execution Flow Diagram
 
-```mermaid
-graph TD
-    A["MIT-BIH Raw ECG (.dat/.hea/.atr)"] --> B["Phase 1: Preprocessing"]
-    
-    subgraph Phase1["Phase 1: Preprocessing (main.py)"]
-        B --> B1["Bandpass Filter (0.5-45Hz)"]
-        B1 --> B2["R-Peak Segmentation (±99 samples)"]
-        B2 --> B3["Dual-Lead Concatenation (396-dim)"]
-        B3 --> B4["Per-Beat Z-Score Normalisation"]
-        B4 --> B5["Patient-Wise 3-Way Split"]
-        B5 --> B5a["DS1_TRAIN (18 records) → Train"]
-        B5 --> B5b["DS1_VAL (4 records) → Val"]
-        B5 --> B5c["DS2_TEST (23 records) → Test"]
-        B5a --> B6{"Augmentation Strategy<br/>(train only)"}
-        B6 -->|none| B7["Raw imbalanced"]
-        B6 -->|class_weight| B8["Compute weights only"]
-        B6 -->|moderate_smote| B9["Capped SMOTE (≤5×)"]
-        B6 -->|smote+weight| B10["Capped SMOTE + weights"]
-        B7 & B8 & B9 & B10 --> B11["StandardScaler<br/>(fit on train only)"]
-    end
-    
-    B11 --> C["Phase 2: Feature Extraction"]
-    
-    subgraph Phase2["Phase 2: PILAE + PCA"]
-        C --> C1["PILAE (396→250)<br/>(fit on train only)"]
-        C1 --> C2["PCA (250→42 or 250→8)<br/>(fit on train only)"]
-        C2 --> C3["Save: Z_train, Z_val, Z_test"]
-    end
-    
-    C3 --> D["Phase 3: Classical Baselines"]
-    C3 --> E["Phase 4: Hybrid Pipeline"]
-    
-    subgraph Phase3["Phase 3: Classical Benchmarks"]
-        D --> D1["LinearSVC"]
-        D --> D2["RBF-SVM (probability=True)"]
-        D --> D3["Logistic Regression"]
-        D --> D4["Decision Tree"]
-        D --> D5["Random Forest"]
-        D --> D6["XGBoost"]
-        D1 & D2 & D3 & D4 & D5 & D6 --> D7["Evaluate on Val → Tune HPs"]
-        D7 --> D8["Evaluate on Test → Final Report"]
-    end
-    
-    subgraph Phase4["Phase 4: Hybrid SVM + VQC"]
-        E --> E1["Load Router (RBF-SVM / LogReg)"]
-        E1 --> E2["Compute p_max or H(x)"]
-        E2 --> E3{"p_max > τ ?"}
-        E3 -->|Yes: Confident| E4["Classical Prediction"]
-        E3 -->|No: Uncertain| E5["PCA → [0,π] → VQC"]
-        E5 --> E6["VQC Training<br/>(100+ epochs, mini-batch,<br/>weighted loss, LR decay,<br/>early stopping on val)"]
-        E4 & E6 --> E7["Merge Predictions"]
-        E7 --> E8["τ Sweep on Val Set"]
-        E8 --> E9["Best τ → Final Test Eval"]
-    end
-    
-    D8 --> F["Phase 5: Ablation & Analysis"]
-    E9 --> F
-    
-    subgraph Phase5["Phase 5: Publication Results"]
-        F --> F1["14 Ablation Experiments"]
-        F --> F2["Feature Separability Analysis"]
-        F --> F3["Confusion Matrix Error Analysis"]
-        F1 & F2 & F3 --> F4["Summary Table + Plots"]
-    end
-```
+[CODE BLOCK REMOVED]
 
 
 shorten the content in it and make this as architecutre
