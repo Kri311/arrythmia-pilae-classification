@@ -212,7 +212,7 @@ def run_all_experiments(python_exe='python'):
     logger.info("ABLATION STUDY SUMMARY")
     logger.info("=" * 70)
     for exp_id, success in results.items():
-        status = "✓ PASSED" if success else "✗ FAILED"
+        status = "PASS PASSED" if success else "FAIL FAILED"
         logger.info(f"  Exp {exp_id:>2}: {status} — {EXPERIMENTS[exp_id]['name']}")
     
     logger.info(f"\nDetailed results are in the individual log files under each module's logs/ directory.")

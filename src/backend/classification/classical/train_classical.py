@@ -38,7 +38,7 @@ MODELS_DIR = os.path.join(PROJECT_ROOT, 'models', 'classical')
 
 # --- Setup Narrative Logging ---
 log_dir = os.path.join(PROJECT_ROOT, 'logs', 'classical')
-    os.makedirs(log_dir, exist_ok=True)
+os.makedirs(log_dir, exist_ok=True)
 log_filename = os.path.join(log_dir, datetime.now().strftime('classical_training_%Y%m%d_%H%M%S.log'))
 
 logging.basicConfig(

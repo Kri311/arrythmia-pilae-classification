@@ -28,7 +28,7 @@ OUTPUT_DIR = os.path.join(PROJECT_ROOT, 'data', 'extracted_features')
 
 # --- Setup Narrative Logging ---
 log_dir = os.path.join(PROJECT_ROOT, 'logs', 'pilae')
-    os.makedirs(log_dir, exist_ok=True)
+os.makedirs(log_dir, exist_ok=True)
 log_filename = os.path.join(log_dir, datetime.now().strftime('pilae_pipeline_%Y%m%d_%H%M%S.log'))
 
 logging.basicConfig(
@@ -52,8 +52,11 @@ def run_feature_extraction(pca_components=0.95, task='multi'):
     output_dir = OUTPUT_DIR
     
     if task == 'binary':
-        preproc_dir += '_binary'
-        output_dir += '_binary'
+        preproc_dir = os.path.join(preproc_dir, 'binary')
+        output_dir = os.path.join(output_dir, 'binary')
+    else:
+        preproc_dir = os.path.join(preproc_dir, 'multi')
+        output_dir = os.path.join(output_dir, 'multi')
     
     # 1. Load Preprocessed Data (3-way split)
     logger.info(f"Loading standardized data from {preproc_dir}...")

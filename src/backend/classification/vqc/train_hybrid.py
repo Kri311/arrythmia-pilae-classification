@@ -74,6 +74,8 @@ def save_confusion_matrix_heatmap(y_true, y_pred, model_name, split_name='test',
     plt.xlabel('Predicted Heartbeat Class')
     plt.tight_layout()
     safe_name = model_name.replace(" ", "_").replace("(", "").replace(")", "").lower()
+    PLOTS_DIR_TASK = os.path.join(PLOTS_DIR, task)
+    os.makedirs(PLOTS_DIR_TASK, exist_ok=True)
     plot_path = os.path.join(PLOTS_DIR_TASK, f"{safe_name}_{split_name}_heatmap.png")
     plt.savefig(plot_path, dpi=300)
     plt.close()

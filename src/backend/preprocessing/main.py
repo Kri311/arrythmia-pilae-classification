@@ -24,8 +24,8 @@ from global_scaling import apply_global_scaling
 
 # --- Setup Narrative Logging ---
 PROJECT_ROOT = os.path.abspath(os.path.join(config.BASE_DIR, '..', '..', '..'))
-    log_dir = os.path.join(PROJECT_ROOT, 'logs', 'preprocessing')
-    os.makedirs(log_dir, exist_ok=True)
+log_dir = os.path.join(PROJECT_ROOT, 'logs', 'preprocessing')
+os.makedirs(log_dir, exist_ok=True)
 log_filename = os.path.join(log_dir, datetime.now().strftime('morphology_pipeline_%Y%m%d_%H%M%S.log'))
 
 logging.basicConfig(
