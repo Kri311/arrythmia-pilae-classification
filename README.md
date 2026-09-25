@@ -10,7 +10,7 @@ A hybrid classical-quantum pipeline for cardiac arrhythmia detection from ECG si
 
 ---
 
-## ⚡ The PILAE Advantage
+## The PILAE Advantage
 Unlike traditional deep autoencoders that rely on slow, iterative gradient-descent (backpropagation), this pipeline leverages a **Pseudoinverse Linear AutoEncoder (PILAE)**. 
 - **Mathematically Instant:** Computes optimal decoder weights analytically in a single closed-form matrix operation.
 - **Lightning Fast:** Reduces 396-dimensional ECG vectors while retaining ~97.6% of signal data in just ~2 seconds of training time.
@@ -50,7 +50,7 @@ flowchart TD
 
 The hybrid binary model achieves the **highest Balanced Accuracy (79.04%)** across all models, with the most symmetric error distribution between Normal and Abnormal classes.
 
-See [REPORT.md](REPORT.md) for full analysis, per-class metrics, confusion matrices, and feature-space separability study.
+See [REPORT.md](docs/REPORT.md) for full analysis, per-class metrics, confusion matrices, and feature-space separability study.
 
 ---
 
@@ -84,6 +84,8 @@ See [REPORT.md](REPORT.md) for full analysis, per-class metrics, confusion matri
 │           ├── train_classical.py             # 6-model benchmark entry point
 │           ├── train_hybrid.py                # Hybrid routing entry point
 │           └── ...                            # VQC models and feature analysis
+├── scripts/
+│   └── run.py                                 # Automated execution script
 ├── tests/
 │   └── test_qnn.py                            # Unit tests
 ├── requirements.txt
@@ -106,29 +108,29 @@ Download the [MIT-BIH Arrhythmia Database](https://physionet.org/content/mitdb/1
 
 ## Reproducing Results
 
-Run each step sequentially:
+You can easily reproduce the results by running the Python orchestrator script from the root directory. 
+
+If you are using a virtual environment (e.g., `venv`), ensure it is activated before running the script. The script allows you to selectively run parts of the pipeline and configure key parameters:
 
 ```bash
-# 1. Preprocess (5-class)
-python src/backend/preprocessing/main.py --augmentation class_weight --task multi
+# Run the entire pipeline for the multi-class task (default)
+python scripts/run.py --mode all --task multi
 
-# 2. Preprocess (binary)
-python src/backend/preprocessing/main.py --augmentation class_weight --task binary
+# Run the entire pipeline for the binary task
+python scripts/run.py --mode all --task binary
 
-# 3. PILAE + PCA feature extraction
-python src/backend/pilae/feature_pipeline.py --task multi
-python src/backend/pilae/feature_pipeline.py --task binary
-
-# 4. Classical baselines
-python src/backend/classification/classical/train_classical.py --task multi
-python src/backend/classification/classical/train_classical.py --task binary
-
-# 5. Hybrid SVM + VQC
-python src/backend/classification/vqc/train_hybrid.py --router rbf_svm --tau 0.80 --task multi
-python src/backend/classification/vqc/train_hybrid.py --router logistic_regression --tau 0.75 --task binary
-
-# 6. Feature-space analysis (optional)
-python src/backend/classification/feature_analysis.py
+# Run ONLY the training phase with custom router parameters
+python scripts/run.py --mode train --task multi --router random_forest --tau 0.90
 ```
+
+### Script Parameters
+
+| Parameter | Type | Default | Description |
+|:---|:---:|:---|:---|
+| `--mode` | string | `all` | What to run. Choices: `all`, `preprocess`, `train`, `analyze`. |
+| `--task` | string | `multi` | The classification target. Choices: `multi`, `binary`. |
+| `--augmentation` | string | `class_weight` | Data augmentation strategy to apply during preprocessing. |
+| `--router` | string | `rbf_svm` / `logistic_regression` | Classical router model. Auto-defaults based on the `--task` flag. |
+| `--tau` | float | `0.80` / `0.75` | Confidence threshold for routing to VQC. Auto-defaults based on the `--task` flag. |
 
 Logs are centralized in the top-level `logs/` directory. Trained models are saved under `models/` and all plots/figures are output to `docs/plots/`.
