@@ -1,0 +1,14 @@
+wfdb==4.3.1
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.7.2
+imbalanced-learn==0.14.2
+torch==2.7.1+cu118
+pennylane==0.42.3
+xgboost==3.2.0
+joblib==1.6.0
+pennylane-lightning[gpu]==0.42.0
+matplotlib==3.10.9
+seaborn==0.13.2
+
+# Python version used for this project: 3.10.10

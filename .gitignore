@@ -1,1 +1,43 @@
-data/mit-bih-arrhythmia-database-1.0.0.zip
+# venv
+venv/
+env/
+.env
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Data
+# Ignore raw data, processed arrays, and extracted features
+data/raw/*
+data/processed/*
+data/extracted_features/*
+# Keep the directory structure if .gitkeep is added
+!data/**/.gitkeep
+
+# Models & Checkpoints
+models/classical/*
+models/vqc/*
+!models/**/.gitkeep
+
+# Logs
+logs/*
+!logs/.gitkeep
+
+# Base/Baseline Model (if not needed in repo)
+base_model/
+
+# Documentation & Drafts
+# Note: Keeping docs/REPORT.md, docs/plots/, and docs/revised_plan.md tracked.
+docs/paper/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Temporary / Miscellaneous
+*.zip
+*.tar.gz

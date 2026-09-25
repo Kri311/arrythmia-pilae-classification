@@ -1,0 +1,69 @@
+# Baseline Project Report: `arrhythmia_vqc/`
+
+This document details the architecture, classification mechanisms, and empirical execution results of the baseline `arrhythmia_vqc/` project. This report serves as a benchmark for comparison against your revised hybrid model.
+
+---
+
+## 1. Project Overview
+The baseline project implements a Classical-Quantum Machine Learning pipeline designed to classify electrocardiogram (ECG) arrhythmias based on the MIT-BIH Arrhythmia Database. The primary goal is to use a non-iterative classical feature extractor combined with a quantum circuit to detect abnormal heartbeats.
+
+---
+
+## 2. Architecture Pipeline
+
+### A. Data Ingestion & Preprocessing
+* **Source:** MIT-BIH Arrhythmia Database.
+* **Segmentation:** The `wfdb` library is used to read raw signals. Heartbeats are segmented using a fixed window of 90 samples before and 90 samples after expert-annotated R-peaks, creating a 180-dimensional input vector per beat.
+* **Label Mapping:** Raw annotations are mapped into 5 standardized classes (Normal, Supraventricular, Ventricular, Fusion, Unknown).
+
+### B. Classical Feature Extraction (PILAE)
+* **Model:** Pseudoinverse Learning Autoencoder (PILAE).
+* **Mechanism:** Unlike deep autoencoders that use gradient descent (which can be slow and prone to vanishing gradients), PILAE initializes a random encoder matrix and calculates the optimal decoder matrix instantly using the Moore-Penrose pseudoinverse. 
+* **Compression:** It reduces the 180-dimensional raw signal down to a robust 96-dimensional hidden representation.
+
+### C. Dimensionality Reduction
+* **PCA Compression:** Because simulating large quantum circuits is computationally prohibitive, the 96 PILAE features are aggressively compressed down to just **4 dimensions** using Principal Component Analysis (PCA).
+* **Scaling:** The features are scaled using `MinMaxScaler` between `[0, \pi]` to prepare them for quantum angular embedding.
+
+---
+
+## 3. The Classification Part
+
+The baseline codebase differs from your `math_draft.pdf` research paper in this stage. **It does not implement the Support Vector Machine (SVM) routing strategy.** Instead, it routes 100% of the dataset directly through the Variational Quantum Circuit (VQC).
+
+### Variational Quantum Circuit (VQC)
+* **Framework:** Implemented using `PennyLane` (`default.qubit` simulator).
+* **State Preparation:** The 4 scaled classical features are encoded into 4 qubits using `AngleEmbedding` (applying rotation gates $R_x, R_y, R_z$).
+* **Entanglement:** A trainable layer (`StronglyEntanglingLayers`) consisting of single-qubit rotations and multi-qubit entangling gates (CNOTs) parameterizes the decision boundary.
+* **Measurement:** The circuit calculates the expectation value of the `PauliZ` observable for each qubit.
+
+### Training Strategy
+* **Binary Simplification:** The 5 mapped classes are simplified into a binary classification task (0 = Normal, 1 = Abnormal).
+* **Optimizer:** Adam Optimizer with a decaying learning rate schedule (0.015 $\rightarrow$ 0.01 $\rightarrow$ 0.005).
+* **Imbalance Handling:** MIT-BIH is heavily skewed toward Normal beats. The training loop dynamically samples an equal number of Normal and Abnormal beats to create perfectly balanced batches (size 64) during every epoch.
+
+---
+
+## 4. Empirical Results
+
+We executed the `arrhythmia_vqc/main.py` script on the full dataset to capture the true baseline performance metrics:
+
+### Execution Metrics
+* **Total Heartbeats Extracted:** 109,468
+* **Class Distribution (Raw):** 
+  * Normal: 90,608
+  * Supraventricular: 2,781
+  * Ventricular: 7,235
+  * Fusion: 802
+  * Unknown: 8,042
+* **Train / Test Split:** 80,000 / 20,000 samples
+* **Training Duration:** 200 Epochs
+
+### Performance
+* **Final VQC Cost Function:** 0.8760 (down from ~1.0035)
+* **Final Test Accuracy:** **87.7%**
+
+### Conclusion & Gap Analysis
+The baseline model achieves a respectable **87.7% accuracy** using a pure PILAE $\rightarrow$ PCA $\rightarrow$ VQC pipeline. 
+
+However, this falls significantly short of the **96.8% accuracy** claimed in your research paper. This discrepancy exists because this baseline code is missing the **SVM Pre-classifier**. By forcing all samples (including easily linearly separable ones) through the VQC, the model is likely underfitting due to the severe PCA compression (96 $\rightarrow$ 4 features) required to make the quantum circuit simulatable. Implementing the SVM routing will allow the classical model to handle easy cases with higher-dimensional data, reserving the VQC strictly for borderline non-linear cases.
