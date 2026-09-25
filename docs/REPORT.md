@@ -385,7 +385,7 @@ Only 42 principal components are needed to capture 95.03% of the total morpholog
 
 The complete system architecture follows a sequential pipeline with a branching hybrid classification stage:
 
-![System Architecture](paper/figures/system_architecture_detailed.png)
+![System Architecture](plots/system_architecture_detailed.png)
 
 ```mermaid
 flowchart TD
@@ -555,11 +555,11 @@ For the binary task, all non-Normal beats are merged into a single "Abnormal" (A
 
 | Linear SVM | RBF SVM |
 |:---:|:---:|
-| ![Linear SVM 5-class](src/backend/classification/classical/evaluation_plots/linear_svm_primary_pre-classifier_test_heatmap.png) | ![RBF SVM 5-class](src/backend/classification/classical/evaluation_plots/rbf_svm_calibrated_test_heatmap.png) |
+| ![Linear SVM 5-class](plots/classical/multi/linear_svm_primary_pre-classifier_test_heatmap.png) | ![RBF SVM 5-class](plots/classical/multi/rbf_svm_calibrated_test_heatmap.png) |
 
 | Random Forest | XGBoost |
 |:---:|:---:|
-| ![Random Forest 5-class](src/backend/classification/classical/evaluation_plots/random_forest_test_heatmap.png) | ![XGBoost 5-class](src/backend/classification/classical/evaluation_plots/xgboost_test_heatmap.png) |
+| ![Random Forest 5-class](plots/classical/multi/random_forest_test_heatmap.png) | ![XGBoost 5-class](plots/classical/multi/xgboost_test_heatmap.png) |
 
 **Dominant Error Transitions (Linear SVM, Five-Class):**
 - S --> N: 1,704 / 1,813 (94.0%) -- Supraventricular beats nearly indistinguishable from Normal
@@ -571,7 +571,7 @@ For the binary task, all non-Normal beats are merged into a single "Abnormal" (A
 
 | Linear SVM (Binary) | Logistic Regression (Binary) | Random Forest (Binary) |
 |:---:|:---:|:---:|
-| ![Linear SVM Binary](src/backend/classification/classical/evaluation_plots_binary/linear_svm_primary_pre-classifier_test_heatmap.png) | ![Logistic Regression Binary](src/backend/classification/classical/evaluation_plots_binary/logistic_regression_test_heatmap.png) | ![Random Forest Binary](src/backend/classification/classical/evaluation_plots_binary/random_forest_test_heatmap.png) |
+| ![Linear SVM Binary](plots/classical/binary/linear_svm_primary_pre-classifier_test_heatmap.png) | ![Logistic Regression Binary](plots/classical/binary/logistic_regression_test_heatmap.png) | ![Random Forest Binary](plots/classical/binary/random_forest_test_heatmap.png) |
 
 ---
 
@@ -767,11 +767,11 @@ The nearly symmetric error pattern (21.0% vs 20.9%) indicates the hybrid model a
 
 **Hybrid RBF SVM + VQC (5-class, tau=0.80):**
 
-![Hybrid RBF SVM VQC 5-class](src/backend/classification/vqc/evaluation_plots/hybrid_rbf_svm_tau0.8_test_heatmap.png)
+![Hybrid RBF SVM VQC 5-class](plots/vqc/multi/hybrid_rbf_svm_tau0.8_test_heatmap.png)
 
 **Hybrid Logistic Regression + VQC (Binary, tau=0.75):**
 
-![Hybrid LR VQC Binary](src/backend/classification/vqc/evaluation_plots/hybrid_logistic_regression_tau0.75_test_heatmap.png)
+![Hybrid LR VQC Binary](plots/vqc/multi/hybrid_logistic_regression_tau0.75_test_heatmap.png)
 
 ---
 
@@ -810,13 +810,13 @@ Key observations:
 - **F class** is the most geometrically isolated (distances 5.18--7.68 to other classes), yet classification is poor due to its tiny sample size (381 training, 386 test).
 - **Q--S distance (4.00)** is relatively small, explaining Q-to-V misclassification given Q's proximity to the S-V region.
 
-![Inter-Class Distances Heatmap](paper/figures/inter_class_distances.png)
+![Inter-Class Distances Heatmap](plots/feature_analysis/inter_class_distances.png)
 
 ### 11.3 t-SNE Visualization
 
 A two-dimensional t-SNE projection of the 42-dimensional feature space provides visual confirmation:
 
-![t-SNE Visualization](paper/figures/tsne_visualization.png)
+![t-SNE Visualization](plots/feature_analysis/tsne_visualization.png)
 
 The plot reveals:
 - The **massive N class density** completely engulfs the S instances, graphically reflecting the extremely low FDR metric.
