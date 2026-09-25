@@ -15,13 +15,14 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PLOT_DIR = os.path.join(BASE_DIR, 'evaluation_plots')
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', '..', '..'))
+PLOT_DIR = os.path.join(PROJECT_ROOT, 'docs', 'plots', 'feature_analysis')
 os.makedirs(PLOT_DIR, exist_ok=True)
 
 AAMI_CLASSES = {0: 'N', 1: 'S', 2: 'V', 3: 'F', 4: 'Q'}
 
 def load_data():
-    feature_dir = os.path.abspath(os.path.join(BASE_DIR, '../pilae/extracted_features'))
+    feature_dir = os.path.join(PROJECT_ROOT, 'data', 'extracted_features', 'multi')
     
     Z_train = np.load(os.path.join(feature_dir, 'Z_train_reduced.npy'))
     y_train = np.load(os.path.join(feature_dir, 'y_train.npy'))

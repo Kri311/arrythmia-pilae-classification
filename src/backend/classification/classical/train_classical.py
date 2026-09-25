@@ -32,12 +32,14 @@ from sklearn.metrics import (classification_report, confusion_matrix, accuracy_s
 
 # --- Setup Bulletproof Paths ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-FEATURES_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', '..', 'pilae', 'extracted_features'))
-MODELS_DIR = os.path.join(BASE_DIR, 'saved_models')
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', '..', '..', '..'))
+FEATURES_DIR = os.path.join(PROJECT_ROOT, 'data', 'extracted_features')
+MODELS_DIR = os.path.join(PROJECT_ROOT, 'models', 'classical')
 
 # --- Setup Narrative Logging ---
-os.makedirs(os.path.join(BASE_DIR, 'logs'), exist_ok=True)
-log_filename = datetime.now().strftime(os.path.join(BASE_DIR, 'logs', 'classical_training_%Y%m%d_%H%M%S.log'))
+log_dir = os.path.join(PROJECT_ROOT, 'logs', 'classical')
+    os.makedirs(log_dir, exist_ok=True)
+log_filename = os.path.join(log_dir, datetime.now().strftime('classical_training_%Y%m%d_%H%M%S.log'))
 
 logging.basicConfig(
     level=logging.INFO,
@@ -50,7 +52,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Create a folder to save the graphs
-PLOTS_DIR = os.path.join(BASE_DIR, 'evaluation_plots')
+PLOTS_DIR = os.path.join(PROJECT_ROOT, 'docs', 'plots', 'classical')
 os.makedirs(PLOTS_DIR, exist_ok=True)
 
 AAMI_CLASSES_MULTI = ['N', 'S', 'V', 'F', 'Q']
@@ -146,10 +148,14 @@ def run_classical_training(task='multi'):
     plots_dir_base = PLOTS_DIR
     
     if task == 'binary':
-        features_dir = FEATURES_DIR + '_binary'
-        models_dir = MODELS_DIR + '_binary'
-        PLOTS_DIR = PLOTS_DIR + '_binary'
-        os.makedirs(PLOTS_DIR, exist_ok=True)
+        features_dir = os.path.join(FEATURES_DIR, 'binary')
+        models_dir = os.path.join(MODELS_DIR, 'binary')
+        PLOTS_DIR = os.path.join(PLOTS_DIR, 'binary')
+    else:
+        features_dir = os.path.join(FEATURES_DIR, 'multi')
+        models_dir = os.path.join(MODELS_DIR, 'multi')
+        PLOTS_DIR = os.path.join(PLOTS_DIR, 'multi')
+    os.makedirs(PLOTS_DIR, exist_ok=True)
     
     # 1. Load the PILAE+PCA features (3-way split)
     logger.info(f"Loading compressed features from {features_dir}...")
@@ -167,7 +173,7 @@ def run_classical_training(task='multi'):
     logger.info(f"Train: {X_train.shape}, Val: {X_val.shape}, Test: {X_test.shape}")
     
     # Load class weights if available
-    class_weights_path = os.path.abspath(os.path.join(features_dir, '..', '..', '..', '..', 'processed_data' + ('_binary' if task == 'binary' else ''), 'class_weights.npy'))
+    class_weights_path = os.path.join(PROJECT_ROOT, 'data', 'processed', task, 'class_weights.npy')
     xgb_weights = None
     if os.path.exists(class_weights_path):
         cw = np.load(class_weights_path)

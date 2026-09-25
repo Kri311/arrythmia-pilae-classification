@@ -23,8 +23,10 @@ from data_augmentation import augment_data
 from global_scaling import apply_global_scaling
 
 # --- Setup Narrative Logging ---
-os.makedirs(os.path.join(config.BASE_DIR, 'logs'), exist_ok=True)
-log_filename = datetime.now().strftime(os.path.join(config.BASE_DIR, 'logs', 'morphology_pipeline_%Y%m%d_%H%M%S.log'))
+PROJECT_ROOT = os.path.abspath(os.path.join(config.BASE_DIR, '..', '..', '..'))
+    log_dir = os.path.join(PROJECT_ROOT, 'logs', 'preprocessing')
+    os.makedirs(log_dir, exist_ok=True)
+log_filename = os.path.join(log_dir, datetime.now().strftime('morphology_pipeline_%Y%m%d_%H%M%S.log'))
 
 logging.basicConfig(
     level=logging.INFO,
@@ -63,7 +65,9 @@ def run_preprocessing(augmentation_strategy='class_weight', task='multi'):
         y_val = np.where(y_val > 0, 1, 0)
         y_test = np.where(y_test > 0, 1, 0)
         config.AAMI_CLASS_NAMES = {0: 'Normal (N)', 1: 'Abnormal (A)'}
-        config.OUTPUT_DIR = config.OUTPUT_DIR + '_binary'
+        config.OUTPUT_DIR = os.path.join(config.OUTPUT_DIR, 'binary')
+    else:
+        config.OUTPUT_DIR = os.path.join(config.OUTPUT_DIR, 'multi')
     
     logger.info("=" * 60)
     logger.info("ALL RECORDS PROCESSED — RAW CLASS DISTRIBUTIONS")

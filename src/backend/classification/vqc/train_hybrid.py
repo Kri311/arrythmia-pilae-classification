@@ -41,19 +41,21 @@ from quantum_model import VQC
 
 # --- Setup Paths ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-FEATURES_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', '..', 'pilae', 'extracted_features'))
-CLASSICAL_MODELS_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'classical', 'saved_models'))
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', '..', '..', '..'))
+FEATURES_DIR = os.path.join(PROJECT_ROOT, 'data', 'extracted_features')
+CLASSICAL_MODELS_DIR = os.path.join(PROJECT_ROOT, 'models', 'classical')
 
 # --- Setup Narrative Logging ---
-os.makedirs(os.path.join(BASE_DIR, 'logs'), exist_ok=True)
-log_filename = datetime.now().strftime(os.path.join(BASE_DIR, 'logs', 'hybrid_vqc_%Y%m%d_%H%M%S.log'))
+log_dir = os.path.join(PROJECT_ROOT, 'logs', 'vqc')
+os.makedirs(log_dir, exist_ok=True)
+log_filename = os.path.join(log_dir, datetime.now().strftime('hybrid_vqc_%Y%m%d_%H%M%S.log'))
 
 logging.basicConfig(level=logging.INFO, format='%(message)s', handlers=[
     logging.FileHandler(log_filename), logging.StreamHandler()
 ])
 logger = logging.getLogger(__name__)
 
-PLOTS_DIR = os.path.join(BASE_DIR, 'evaluation_plots')
+PLOTS_DIR = os.path.join(PROJECT_ROOT, 'docs', 'plots', 'vqc')
 os.makedirs(PLOTS_DIR, exist_ok=True)
 
 AAMI_CLASSES_MULTI = ['N', 'S', 'V', 'F', 'Q']
@@ -72,7 +74,7 @@ def save_confusion_matrix_heatmap(y_true, y_pred, model_name, split_name='test',
     plt.xlabel('Predicted Heartbeat Class')
     plt.tight_layout()
     safe_name = model_name.replace(" ", "_").replace("(", "").replace(")", "").lower()
-    plot_path = os.path.join(PLOTS_DIR, f"{safe_name}_{split_name}_heatmap.png")
+    plot_path = os.path.join(PLOTS_DIR_TASK, f"{safe_name}_{split_name}_heatmap.png")
     plt.savefig(plot_path, dpi=300)
     plt.close()
     logger.info(f"Saved heatmap: {plot_path}")
@@ -301,8 +303,11 @@ def run_hybrid_pipeline(router_name='rbf_svm', tau=0.80, sweep_tau=False,
     classical_models_dir = CLASSICAL_MODELS_DIR
     
     if task == 'binary':
-        features_dir = FEATURES_DIR + '_binary'
-        classical_models_dir = CLASSICAL_MODELS_DIR + '_binary'
+        features_dir = os.path.join(FEATURES_DIR, 'binary')
+        classical_models_dir = os.path.join(CLASSICAL_MODELS_DIR, 'binary')
+    else:
+        features_dir = os.path.join(FEATURES_DIR, 'multi')
+        classical_models_dir = os.path.join(CLASSICAL_MODELS_DIR, 'multi')
     
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     logger.info(f"PyTorch Compute Device: {device.type.upper()}")
@@ -454,7 +459,8 @@ def run_hybrid_pipeline(router_name='rbf_svm', tau=0.80, sweep_tau=False,
     logger.info(f"Inference time: {infer_time:.4f}s")
     
     # Save the VQC model
-    vqc_save_path = os.path.join(BASE_DIR, 'saved_models' + ('_binary' if task == 'binary' else ''))
+    vqc_save_path = os.path.join(PROJECT_ROOT, 'models', 'vqc', 'binary') if task == 'binary' else os.path.join(PROJECT_ROOT, 'models', 'vqc', 'multi')
+    os.makedirs(vqc_save_path, exist_ok=True)
     os.makedirs(vqc_save_path, exist_ok=True)
     torch.save(vqc_model.state_dict(), os.path.join(vqc_save_path, f'vqc_{router_name}_tau{tau}.pt'))
     if q_pca is not None:

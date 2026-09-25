@@ -22,12 +22,14 @@ from pca_dim_reduction import apply_pca
 
 # --- Setup Bulletproof Paths ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PREPROC_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', '..', '..', 'processed_data'))
-OUTPUT_DIR = os.path.join(BASE_DIR, 'extracted_features')
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', '..', '..'))
+PREPROC_DIR = os.path.join(PROJECT_ROOT, 'data', 'processed')
+OUTPUT_DIR = os.path.join(PROJECT_ROOT, 'data', 'extracted_features')
 
 # --- Setup Narrative Logging ---
-os.makedirs(os.path.join(BASE_DIR, 'logs'), exist_ok=True)
-log_filename = datetime.now().strftime(os.path.join(BASE_DIR, 'logs', 'pilae_pipeline_%Y%m%d_%H%M%S.log'))
+log_dir = os.path.join(PROJECT_ROOT, 'logs', 'pilae')
+    os.makedirs(log_dir, exist_ok=True)
+log_filename = os.path.join(log_dir, datetime.now().strftime('pilae_pipeline_%Y%m%d_%H%M%S.log'))
 
 logging.basicConfig(
     level=logging.INFO,

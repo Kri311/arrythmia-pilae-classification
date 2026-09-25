@@ -24,8 +24,9 @@ CLASSICAL_DIR = os.path.join(BASE_DIR, 'classical')
 VQC_DIR = os.path.join(BASE_DIR, 'vqc')
 
 # --- Setup Logging ---
-os.makedirs(os.path.join(BASE_DIR, 'logs'), exist_ok=True)
-log_filename = datetime.now().strftime(os.path.join(BASE_DIR, 'logs', 'ablation_%Y%m%d_%H%M%S.log'))
+log_dir = os.path.join(PROJECT_ROOT, 'logs', 'ablation')
+os.makedirs(log_dir, exist_ok=True)
+log_filename = os.path.join(log_dir, datetime.now().strftime('ablation_%Y%m%d_%H%M%S.log'))
 
 logging.basicConfig(
     level=logging.INFO,

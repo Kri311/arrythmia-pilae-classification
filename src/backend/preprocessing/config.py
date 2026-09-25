@@ -10,8 +10,9 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Data Paths
-DATA_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', '..', '..', 'data', 'mit-bih-arrhythmia-database-1.0.0'))
-OUTPUT_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', '..', '..', 'processed_data'))
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', '..', '..'))
+DATA_DIR = os.path.join(PROJECT_ROOT, 'data', 'raw', 'mit-bih-arrhythmia-database-1.0.0')
+OUTPUT_DIR = os.path.join(PROJECT_ROOT, 'data', 'processed')
 
 # Window Size Parameters (peak-99 to peak+99 = 198 samples per lead)
 WINDOW_LEFT = 99
